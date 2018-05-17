@@ -12,4 +12,8 @@ class Comment extends Model
       public $primaryKey='id';
      //Timestamp
      public $timestamp =true;
+
+     public function startup(){
+          return $this->belongsTo('App\StartUp');
+     }
 }

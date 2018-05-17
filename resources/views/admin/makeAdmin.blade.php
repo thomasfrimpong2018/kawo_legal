@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>User Area | Dashboard</title>
+        <title>Admin Area | Dashboard</title>
           <!-- CSRF Token -->
           <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Bootstrap core CSS -->
@@ -71,22 +71,23 @@
    <center>
    <div class="container">
      <div class="panel-body">
-     <h3>Are You Sure You Want To delete the start up "{{$startup->business_name}}"</h3>
+     <h3>Are You Sure You Want To make  "{{$user->name}}" an administrator</h3>
 
        <div class="row">
          <div class="col-md-6">
-           <form style="float:right" action="/dashboard/{{$startup->id}}" method="POST">
-            {{method_field('DELETE')}}
+           <form style="float:right" action="/newadmin/{{$user->id}}" method="POST">
+            {{method_field('PUT')}}
               {{ csrf_field() }}
-              <button type="submit" class="btn btn-danger" >
+              <input type="hidden" value="1" name="admin"/>
+              <button type="submit" class="btn btn-success" >
               </form>
-              <span class="glyphicon glyphicon-trash"></span>
+              <span class="glyphicon glyphicon-ok"></span>
               <span>Yes</span>
             </button>
          </div>
          <div class="col-md-1" style="float:left">
            
-            <a href="/dashboard" class="btn btn-success"><span class="glyphicon glyphicon-remove"></span> Cancel</a>
+            <a href="/userlist" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Cancel</a>
          </div>
 
        </div>

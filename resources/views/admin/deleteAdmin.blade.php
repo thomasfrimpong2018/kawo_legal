@@ -71,22 +71,23 @@
    <center>
    <div class="container">
      <div class="panel-body">
-     <h3>Are You Sure You Want To delete the start up "{{$startup->business_name}}"</h3>
+     <h3>Are You Sure You Want To Delete  "{{$admin->name}}"</h3>
 
        <div class="row">
          <div class="col-md-6">
-           <form style="float:right" action="/dashboard/{{$startup->id}}" method="POST">
+           <form style="float:right" action="/deleteadmin/{{$admin->id}}" method="POST">
             {{method_field('DELETE')}}
               {{ csrf_field() }}
+              
               <button type="submit" class="btn btn-danger" >
               </form>
-              <span class="glyphicon glyphicon-trash"></span>
+              <span class="glyphicon glyphicon-ok"></span>
               <span>Yes</span>
             </button>
          </div>
          <div class="col-md-1" style="float:left">
            
-            <a href="/dashboard" class="btn btn-success"><span class="glyphicon glyphicon-remove"></span> Cancel</a>
+            <a href="/adminlist" class="btn btn-success"><span class="glyphicon glyphicon-remove"></span> Cancel</a>
          </div>
 
        </div>

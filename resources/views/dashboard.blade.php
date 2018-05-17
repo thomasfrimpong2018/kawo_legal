@@ -56,7 +56,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-10">
-            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Dashboard</h1>
+            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>User Dashboard</h1>
           </div>
           <div class="col-md-2">
             <div class="dropdown create">
@@ -92,10 +92,10 @@
                 Dashboard
               </a>
               <a href='/addstartup' class="list-group-item"><span class="glyphicon glyphicon-plus" aria-hidden="true">    
-                </span> Add Startup
+                </span>Add Startup 
               </a>
               <a href="detailed.html" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true">   
-                </span> Startup Details
+                </span>Startup Details 
               </a>
               
             </div>
@@ -115,13 +115,14 @@
                     </div>
                   </div>
                   <br>
+                  @if(count($startups)>0)
                   <table class="table table-striped table-hover">
                     <tr>
                       <th>Company</th>
                       <th>Market/Industry</th>
-                      <th>Joined</th>
+                      <th>Added</th>
                       <th>Status</th>
-                     <th>Action</th>
+                     <th>Edit/Delete/Details</th>
                     </tr>
 
                     @foreach($startups as $startup)
@@ -132,11 +133,15 @@
                       <td>{{$startup->status}}</td>
                      <td><a class="btn btn-primary" href="/dashboard/{{$startup->id}}/edit"><i class="glyphicon glyphicon-pencil"></i></a>
 
-                       <a class="btn btn-danger" href="/dashboard/{{$startup->id}}"><i class="glyphicon glyphicon-trash"></a></td>
+                       <a class="btn btn-danger" href="/dashboard/{{$startup->id}}"><i class="glyphicon glyphicon-trash"></i></a>
+                        <a class="btn btn-info" href="/showdetailed/{{$startup->id}}"><i class="glyphicon glyphicon-list-alt"></i></a> </td>
                     </tr>
                     @endforeach
-
+                   
                   </table>
+                  @else
+                    <h4>No  StarUp to show</h4>
+                    @endif
               </div>
             </div>
 

@@ -88,7 +88,7 @@
           <div class="col-md-3">
 
             <div class="list-group">
-              <a href="/dashboard" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              <a href="/dashboard" class="list-group-item "><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                 Dashboard
               </a>
               <a href="/newstartup" class="list-group-item"><span class="glyphicon glyphicon-plus" aria-hidden="true">    
@@ -96,16 +96,16 @@
               </a>
               
               <a href="/userlist" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true">   
-              </span>Manage Users 
+              </span>All Users 
             </a>
             <a href="/adminlist" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true">   
-            </span>Manage Admins
+            </span>All Admins
           </a>
             
               <a href="/approvedstartup" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true">   
                 </span> Approved StartUps
               </a>
-              <a href="/unapprovedstartup" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true">   
+              <a href="/unapprovedstartup" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-list-alt" aria-hidden="true">   
               </span> Unapproved StartUps
             </a>
             </div>
@@ -116,15 +116,12 @@
             <!--List of All Startups-->
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">All Startups</h3>
+                <h3 class="panel-title">All Unapproved Startups</h3>
               </div>
               <div class="panel-body">
                   <div class="row">
                     <div class="col-md-12">
-                      
-                      <input type="text" class="form-control" placeholder="Filter Startups" name="search" id="search" />
-                     
-                      
+                      <input type="text" class="form-control" placeholder="Filter Startups">
                     </div>
                   </div>
                   <br>
@@ -133,30 +130,32 @@
                     <tr>
                       <th>Company</th>
                       <th>Market/Industry</th>
-                      <th>Location</th>
-                      <th>Joined</th>
+                      
+                      <th>Added</th>
                       <th>Status</th>
                       <th>Details</th>
+                      <th>Approve</th>
                     </tr>
 
-                   
                     @foreach($startups as $startup)
                     <tr>
                       <td><img src="/storage/cover_image/{{$startup->business_logo}}" class="img-logo"> {{$startup->business_name}}</td>
                       <td>{{$startup->industry}}</td>
-                      <td>{{$startup->business_location}}</td>
+                      
                       <td>{{$startup->created_at}}</td>
                       <td>{{$startup->status}}</td>
                       <td><a class="btn btn-primary" href="/showdetails/{{$startup->id}}"><i class="glyphicon glyphicon-pencil"></i></a> </td>
+                      <td><a class="btn btn-success" href="/approve/{{$startup->id}}"><i class="glyphicon glyphicon-ok"></i></a></td>
+
                     </tr>
                     @endforeach
-                    </table>
-                    {{$startups->links()}}
+
                     
-                  
+                  </table>
+                  {{$startups->links()}}
                   @else
-                  <h4>No StarUp to show</h4>
-                  @endif
+                    <h4>No Unapproved StarUp to show</h4>
+                    @endif
               </div>
             </div>
 
@@ -164,7 +163,6 @@
         </div>
       </div>
     </section>
-
     <footer id="footer">
       <p>Copyright KawoLegal, &copy; 2017</p>
     </footer>
@@ -175,6 +173,5 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery-3.1.1.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/app.js"></script>
   </body>
 </html>

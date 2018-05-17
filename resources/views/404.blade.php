@@ -15,13 +15,13 @@
     <title>404 error</title>
 
     <!-- Material Design Icons -->
-    <link rel="stylesheet" href="assets/MaterialDesign-Webfont-master/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/MaterialDesign-Webfont-master/css/materialdesignicons.min.css">
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
 
     <!-- Fonts CSS -->
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,200,500,600,700' rel='stylesheet' type='text/css'>
@@ -47,16 +47,20 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="index.html"><img src="assets/img/kawo-legal-logo.png" alt="KawoLegal" class="logo"></a>
+	          <a class="navbar-brand" href="index.html"><img src="/assets/img/kawo-legal-logo.png" alt="KawoLegal" class="logo"></a>
 	        </div>
 
 	        <div id="navbar" class="navbar-collapse collapse">
 
 		        <ul class="nav navbar-nav navbar-right kl-nav">
-		            <li><a href="index.html">Home</a></li>
-		            <li><a href="startups.html">Startups</a></li> 
-		            <li><a href="register.html">Register</a></li>
-		            <li><a href="mainlogin.html">Login</a></li>    
+		            <li><a href="/">Home</a></li>
+					<li><a href="/startups">Startups</a></li> 
+					@if(Auth::guest())
+		            <li><a href="/register">Register</a></li>
+					<li><a href="/login">Login</a></li> 
+					@else
+					<li><a href="/dashboard">Dashboard</a></li> 
+					  @endif   
 		        </ul>
 
 	        </div><!-- /.nav-collapse -->
@@ -82,12 +86,12 @@
 
     			<br>
 
-    			<h3>Ok just take me <a href="index.html">home</a>!</h3>
+    			<h3>Ok just take me <a href="/">home</a>!</h3>
 
     		</div>
 
     		<div class="col-md-6 hidden-xs">
-    			<img src="assets/img/court.png" class="img-responsive">
+    			<img src="/assets/img/court.png" class="img-responsive">
     		</div>
 
     	</div>
@@ -127,10 +131,10 @@
     <!-- SCRIPTS -->
 
     <!-- JQuery -->
-    <script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery-3.1.1.min.js"></script>
 
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
 
 
 </body>

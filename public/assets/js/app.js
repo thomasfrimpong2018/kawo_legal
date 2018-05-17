@@ -1,32 +1,18 @@
 //ajax functionality added
 
-$("document").ready(function () {
+$(document).ready(function () {
 
-    $(".btn-danger").on("click", function () {
-        var pageId = $(this).attr("id");
-      
-        var confirmed=confirm("Are you sure you want to delete this  record?");
+$('#search').keyup(function(){
 
-        if (confirmed){
+var name=$(this).val();
+$.post('get_startups.php',{name:name},function(data){
 
-       $.get("ajax/list.php", {id: pageId});
-           
-       
-       //$("#table"+pageId).remove();
-            alert('Record Deleted');
+    $('div#back-result').css({'display':'block'});
+    $('div#back-result').html(data);
 
-            $("#row_"+pageId).remove();
-        }
+});
 
-
-
-
-
-    })
-
-
-
-
+});    
 
 
 

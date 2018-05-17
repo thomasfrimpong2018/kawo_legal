@@ -1,5 +1,76 @@
- @extends('layouts.base')
- @section('content')
+ 
+ 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <link rel="shortcut icon" href=""> 
+
+    <title>KawoLegal | Online Legal Help</title>
+
+    <!-- Material Design Icons -->
+    <link rel="stylesheet" href="/assets/MaterialDesign-Webfont-master/css/materialdesignicons.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+    <!-- Fonts CSS -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,200,500,600,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+    
+     <!-- Navbar -->
+	 <nav class="navbar navbar-fixed-top topnav">
+
+	    <div class="container">
+
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a class="navbar-brand" href="/"><img src="assets/img/kawo-legal-logo.png" alt="KawoLegal" class="logo"></a>
+	        </div>
+
+	        <div id="navbar" class="navbar-collapse collapse">
+
+		        <ul class="nav navbar-nav navbar-right kl-nav">
+		            <li><a href="/">Home</a></li>
+		            <li class="active"><a href="/startups">Startups</a></li> 
+					
+					@if(Auth::guest())
+					<li ><a href="/register">Register</a></li>
+					<li><a href="/login">Login</a></li> 
+                   @else
+					<li><a href="/dashboard">Dashboard</a></li> 
+					  @endif    
+		        </ul>
+
+	        </div><!-- /.nav-collapse -->
+
+	    </div>
+
+    </nav><!-- /.Navbar -->
     <div class="container">
 
     	<div class="row">
@@ -8,41 +79,35 @@
 
     		<div class="col-md-10 content">
 
-    			<div class="searchbar">
-    				<input type="text" class="form-control" placeholder="search Startup by name or industry">
-    			</div>
+    			
     		
 	    		<div class="list">
 	    			
 	    			<ul>
-
+                        @foreach($startups as $startup)
 	    				<li>
+							
 	    					
 	    					<div class="col-md-12">
 	    						
 	    						<div class="col-md-2">
 
 	    							<div class="profile">
-	    								<h3><img src="assets/img/placeholder" class="img-responsive dp" alt="company logo"></h3>
+	    								<h3><img src='/storage/cover_image/{{$startup->business_logo}}' class="img-responsive dp" alt="company logo"></h3>
 	    							</div>
 
 	    						</div>
 
 	    						<div class="col-md-10">
 	    							
-	    							<h3>Company Name</h3>
+	    							<h3>{{$startup->business_name}}</h3>
 
 	    							<p>
-	    								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	    								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	    								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	    								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	    								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	    								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+											{!!$startup->description!!}
 	    							</p>
 
 	    							<p>
-	    								<a href="maindetailed.html"><button class="btn btn-default btn-sm">See full details</button></a>
+	    								<a href="/showdetail/{{$startup->id}}"><button class="btn btn-default btn-sm">See full details</button></a>
 	    							</p>
 
 	    							<hr>
@@ -51,137 +116,38 @@
 
 	    					</div>
 
-	    				</li>
+						</li>
+						@endforeach
 
-	    				<li>
-	    					
-	    					<div class="col-md-12">
-	    						
-	    						<div class="col-md-2">
-
-	    							<div class="profile">
-	    								<h3><img src="assets/img/placeholder" class="img-responsive dp" alt="company logo"></h3>
-	    							</div>
-
-	    						</div>
-
-	    						<div class="col-md-10">
-	    							
-	    							<h3>Company Name</h3>
-
-	    							<p>
-	    								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	    								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	    								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	    								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	    								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	    								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	    							</p>
-
-	    							<p>
-	    								<a href="maindetailed.html"><button class="btn btn-default btn-sm">See full details</button></a>
-	    							</p>
-
-	    							<hr>
-
-	    						</div>
-
-	    					</div>
-
-	    				</li>
-
-	    				<li>
-	    					
-	    					<div class="col-md-12">
-	    						
-	    						<div class="col-md-2">
-
-	    							<div class="profile">
-	    								<h3><img src="assets/img/placeholder" class="img-responsive dp" alt="company logo"></h3>
-	    							</div>
-
-	    						</div>
-
-	    						<div class="col-md-10">
-	    							
-	    							<h3>Company Name</h3>
-
-	    							<p>
-	    								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	    								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	    								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	    								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	    								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	    								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	    							</p>
-
-	    							<p>
-	    								<a href="maindetailed.html"><button class="btn btn-default btn-sm">See full details</button></a>
-	    							</p>
-
-	    							<hr>
-
-	    						</div>
-
-	    					</div>
-
-	    				</li>
-
-	    				<li>
-	    					
-	    					<div class="col-md-12">
-	    						
-	    						<div class="col-md-2">
-
-	    							<div class="profile">
-	    								<h3><img src="assets/img/placeholder" class="img-responsive dp" alt="company logo"></h3>
-	    							</div>
-
-	    						</div>
-
-	    						<div class="col-md-10">
-	    							
-	    							<h3>Company Name</h3>
-
-	    							<p>
-	    								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	    								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	    								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	    								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	    								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	    								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	    							</p>
-
-	    							<p>
-	    								<a href="maindetailed.html"><button class="btn btn-default btn-sm">See full details</button></a>
-	    							</p>
-
-	    							<hr>
-
-	    						</div>
-
-	    					</div>
-
-	    				</li>
+	    				
 
 	    			</ul>
 
 	    		</div>
 
 
-	    		<nav aria-label="navigate">
-				  <ul class="pager">
-				    <li><a href="#">Previous</a></li>
-				    <li><a href="#">Next</a></li>
-				  </ul>
-				</nav>
-
-	    	</div>
+	    		</div>
+                 {{$startups->links()}}
+	    	
 
 	    	<div class="col-md-1"></div>
 
     	</div>
 
 	</div>
-	@endsection
+
+
+   
+
+
+    <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+
+</body>
+</html>
 

@@ -9,6 +9,8 @@
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/adminstyle.css" rel="stylesheet">
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
   </head>
   <body> 
     <nav class="navbar navbar-default">
@@ -32,7 +34,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h1 class="text-center">Admin Login</h1>
+            <h1 class="text-center">Admin Register</h1>
           </div>      
         </div>
       </div>
@@ -43,16 +45,26 @@
         <div class="row">
           
           <div class="col-md-4 col-md-offset-4">
-            <form id="login" class="well" action="">
+              @include('inc.messages')
+            <form id="login" class="well" action="/newadmin" method="POST">
+                {{ csrf_field() }}
+               <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" class="form-control" name="name" placeholder="Enter Fullname">
+                </div>
               <div class="form-group">
-                <label>Username</label>
-                <input type="text" class="form-control" placeholder="Enter Username">
+                <label>Email</label>
+                <input type="email" class="form-control" name="email" placeholder="Enter Email">
               </div>
               <div class="form-group">
                 <label>Password</label>
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" class="form-control" name="password" placeholder="Password">
               </div>
-              <button class="btn btn-primary btn-block">Login</button>
+              <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password"  class="form-control" placeholder="Confirm Password">
+                  </div>
+              <button class="btn btn-primary btn-block">Register</button>
             </form>
 
           </div>

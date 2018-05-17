@@ -257,3 +257,14 @@ p > .mdi {
     background-color: #c0392b;
   }
 }
+
+div#back-result{
+  padding:10px; width:400px; margin:0 auto; border: 1px solid silver;display: none
+}
+
+#pics{
+  vertical-align: middle;
+}
+#user{
+  margin: 3px;
+}

@@ -5,20 +5,22 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KawoLegal User| Dashboard</title>
+    <title>KawoLegal Admin | Dashboard</title>
+    <!-- Material Design Icons -->
+    <link rel="stylesheet" href="/assets/MaterialDesign-Webfont-master/css/materialdesignicons.min.css">
+
       <!-- CSRF Token -->
       <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap core CSS -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/css/adminstyle.css" rel="stylesheet">
-     
-     <!-- Fonts CSS -->
-     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,200,500,600,700' rel='stylesheet' type='text/css'>
-     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 
-     <!-- Material Design Icons -->
-    <link rel="stylesheet" href="/assets/MaterialDesign-Webfont-master/css/materialdesignicons.min.css">
+    <!-- Fonts CSS -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,200,500,600,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 
+    <!-- Custom CSS -->
+    
   </head>
 <body>
     
@@ -156,50 +158,32 @@
             	<hr>
 
             	<h3>Comments:</h3>
-      @foreach($comments  as $comment)
+              @foreach($comments  as $comment)
 	            <ul>
-          
+
 	            	<li>
 		            	<div class="row">
-                   
 		            		<div class="col-md-1 comment-icon">
 		            			<span class="mdi mdi-comment-outline"></span>
 		            		</div>
-                      <div class="col-md-10">
-				            	 {{$comment->body}}
+
+			            	<div class="col-md-10">
+				            	{{$comment->body}}
 				            </div>
-                  <div class="col-md-1"><b></b></div>
-                    
+
+				            <div class="col-md-1"></div>
 		            	</div>
 	            	</li>
-           
+
 	            	<br>
 
 	            	
 
 	            </ul>
-       @endforeach
+              @endforeach
 	            <br>
 
-	            <div class="row">
-
-		            <div class="col-md-7 addcomment">
-
-		            	<form method="POST" action="/addcomment/{{$startup->id}}">
-                    {{ csrf_field() }}
-		            		<textarea class="form-control" name="comment" rows="3" placeholder="Add a comment here"></textarea>
-                     <input type="hidden" name="startup_id" value="{{$startup->id}}" />
-		            		<br>
-
-		            		<button type="submit" class="btn btn-default">Comment</button>
-
-		            	</form>
-
-		            </div>
-
-		            <div class="col-md-5"></div>
-
-	            </div>
+	            
 
             </div><!-- /.comments -->
 
@@ -226,10 +210,10 @@
 			<div class="col-md-6 social">
 
 				<ul class="">
-					<li><a href=""><span class="mdi mdi-facebook"></span></a></li>
-					<li><a href=""><span class="mdi mdi-twitter"></span></a></li>
-					<li><a href=""><span class="mdi mdi-linkedin"></span></a></li>
-					<li><a href=""><span class="mdi mdi-instagram"></span></a></li>
+					<li><a href="#"><span class="mdi mdi-facebook"></span></a></li>
+					<li><a href="#"><span class="mdi mdi-twitter"></span></a></li>
+					<li><a href="#"><span class="mdi mdi-linkedin"></span></a></li>
+					<li><a href="#"><span class="mdi mdi-instagram"></span></a></li>
 				</ul>
 
 			</div>

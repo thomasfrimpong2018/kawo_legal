@@ -6,6 +6,7 @@ use App\StartUp;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Comment;
 
 
 class DashboardController extends Controller
@@ -27,15 +28,23 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        //display all startups created by user
-         //$startups=StartUp::all();
+        
+
+         //Conditional redirecting whether user is admin or not
+         if(Auth::user()->admin == 0){
 
          $user_id=auth()->user()->id;
          $user=User::find($user_id);
 
+      return view('dashboard')->with('startups',$user->startup);
+         }else{
 
-        return view('dashboard')->with('startups',$user->startup);
+          $startups=StartUp::orderBy('created_at','desc')->paginate(10);
+            return view('admin.dashboard')->with('startups', $startups) ;
+         }
     }
+
+
 
     public function create(){
       return view('users.addStartup');
@@ -106,7 +115,7 @@ class DashboardController extends Controller
         $startup->save();
        
         
-        return redirect('/dashboard')->with('success','StartUp Created Successfully');
+        return redirect('/dashboard')->with('success',$startup->business_name.' is Created Successfully');
 
 
 
@@ -116,8 +125,12 @@ class DashboardController extends Controller
     public function show($id){
    
     $startup=StartUp::find($id);
-        
+
+    if(auth()->user()->id == $startup->user_id){   
    return view('users.confirmdelete')->with('startup',$startup);
+    }else{
+        return view('404');
+    }
 
     }
     //deleting a startup
@@ -133,17 +146,23 @@ class DashboardController extends Controller
         }
 
       $startup->delete();
-        return redirect('/dashboard')->with('success','StartUp Deleted Successfully');
+        return redirect('/dashboard')->with('success',$startup->business_name.' is Deleted Successfully');
         
 
     }
 
 
     public function edit($id){
+   $startup=StartUp::find($id);
 
-        $startup=StartUp::find($id);
+   //checking unauthorised edit
+        if(auth()->user()->id == $startup->user_id){
+
         return view('users.edit')->with('startup',$startup);
+    }else{
+        return view('404');
     }
+}
 
     //updating startup details
 
@@ -178,7 +197,7 @@ class DashboardController extends Controller
         $startup->linkedin =$request->input('linkedin');
         $startup->industry =$request->input('industry');
         $startup->description =$request->input('editor1');
-        $startup->business_logo =$fileNameToStore;
+       // $startup->business_logo =$fileNameToStore;
         $startup->founder_1=$request->input('fullname1');
         $startup->facebook_1=$request->input('facebook1');
         $startup->twitter_1=$request->input('twitter1');
@@ -211,6 +230,52 @@ class DashboardController extends Controller
         }
 
 
-        return redirect('/dashboard')->with('success','StartUp Updated Successfully');
+        return redirect('/dashboard')->with('success',$startup->business_name.' is Updated Successfully');
     }
-}
+
+    public function showDetails($id){
+       $startup=StartUp::find($id);
+       $comments=$startup->comment;
+
+       return view('users.detailed',compact('startup','comments'));
+
+    }
+
+    public function addComment(Request $request,$id){
+       $comment=new Comment;
+        $comment->body=$request->input('comment');
+        $comment->start_up_id=$request->input('startup_id');
+        $comment->save();
+
+       $person= $comment->startup;
+
+        return redirect('/showdetailed/'.$id);
+
+       
+
+    }
+
+    public function filter(Request $request ) {
+
+
+        
+        $sql="SELECT  * FROM startups WHERE business_name LIKE ' %".$_POST['search']." %' ";
+        $array=$db->query($sql);
+        
+        foreach($array as $key){ ?>
+        
+           
+        <div id="user"> 
+            <img src="<?php echo $key['business_logo'] ?>" id="pics" />
+            $nbsp;<span><?php echo $key['business_name']; ?></span>
+        </div>
+       
+        <?php
+        
+        }
+        
+       
+
+      }
+     }
+    

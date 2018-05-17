@@ -23,7 +23,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><img src="/assets/img/kawo-legal-logo.png" class="logo"></a>
+          <a class="navbar-brand" href="/"><img src="/assets/img/kawo-legal-logo.png" class="logo"></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -125,11 +125,7 @@
                             {{Form::email('email',$startup->email,['class'=>"form-control"])}}
                           </div>
 
-                          <div class="form-group">
-                            {{Form::label('password','Password')}}
-                            
-                            {{Form::text('password',$startup->password,['class'=>"form-control"])}}
-                          </div>
+                         
 
                           <br>
 
@@ -189,17 +185,7 @@
                             {{Form::textarea('editor1',$startup->description,['class'=>"form-control"]) }}
                           </div>
 
-                          <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div> {{Form::label('cover_image','Business Logo')}}</div>
-                            <div class="fileinput-new thumbnail" style="width: 100px; height: 100px;">
-                              <img src="/storage/cover_image/{{$startup->business_logo}}" alt="logo">
-                            </div>
-                            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
-                            <div class="text-center">
-                              <span class="btn btn-default btn-file"><span class="fileinput-new">Upload photo</span><span class="fileinput-exists">Change</span><input type="file"  name="cover_image"></span>
-                              <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-                            </div>
-                          </div>
+                          
 
                           <br><br>
 

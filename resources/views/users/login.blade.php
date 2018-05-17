@@ -47,7 +47,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="index.html"><img src="assets/img/kawo-legal-logo.png" alt="KawoLegal" class="logo"></a>
+	          <a class="navbar-brand" href="/"><img src="assets/img/kawo-legal-logo.png" alt="KawoLegal" class="logo"></a>
 	        </div>
 
 	        <div id="navbar" class="navbar-collapse collapse">

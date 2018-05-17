@@ -1,72 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KawoLegal User| Dashboard</title>
-      <!-- CSRF Token -->
-      <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Bootstrap core CSS -->
-    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/css/adminstyle.css" rel="stylesheet">
-     
-     <!-- Fonts CSS -->
-     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,200,500,600,700' rel='stylesheet' type='text/css'>
-     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <head>
 
-     <!-- Material Design Icons -->
-    <link rel="stylesheet" href="/assets/MaterialDesign-Webfont-master/css/materialdesignicons.min.css">
-
-  </head>
-<body>
-    
-    <!-- Navbar -->
-    
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/"><img src="../assets/img/kawo-legal-logo.png" class="logo"></a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/dashboard">Dashboard</a></li>
-            <li><a href="#">Add Startup</a></li>
-            <li><a href="#">Startup Details</a></li>
-          </ul>
+        <!-- Meta -->
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+          <meta http-equiv="x-ua-compatible" content="ie=edge">
           
-          <ul class="nav navbar-nav navbar-right">
-
-            <li class="active">
-                <a id="navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                   Welcome, {{ Auth::user()->name }} <span class="caret"></span>
-                </a>
-            </li>
-
-            <li><a href="{{ route('logout') }}"
-              onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();">Logout</a>
-
-                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                          {{ csrf_field() }}
-                           
-                       </form></li>
-
-          </ul>
-
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
-    </nav><!-- /.Navbar -->
-
+          <meta name="description" content="">
+          <meta name="author" content="">    
+          <link rel="shortcut icon" href=""> 
+      
+          <title>KawoLegal | Online Legal Help</title>
+      
+          <!-- Material Design Icons -->
+          <link rel="stylesheet" href="/assets/MaterialDesign-Webfont-master/css/materialdesignicons.min.css">
+      
+          <!-- Bootstrap core CSS -->
+          <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+      
+          <!-- Custom CSS -->
+          <link href="/assets/css/style.css" rel="stylesheet">
+      
+          <!-- Fonts CSS -->
+          <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,200,500,600,700' rel='stylesheet' type='text/css'>
+          <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+          <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+          <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+          <![endif]-->
+      
+      </head>
+      <body>
+          
+           <!-- Navbar -->
+         <nav class="navbar navbar-fixed-top topnav">
+      
+            <div class="container">
+      
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="index.html"><img src="/assets/img/kawo-legal-logo.png" alt="KawoLegal" class="logo"></a>
+                </div>
+      
+                <div id="navbar" class="navbar-collapse collapse">
+      
+                  <ul class="nav navbar-nav navbar-right kl-nav">
+                      <li><a href="/">Home</a></li>
+                      <li class="active"><a href="/startups">Startups</a></li> 
+                
+                @if(Auth::guest())
+                <li ><a href="/register">Register</a></li>
+                <li><a href="/login">Login</a></li> 
+                         @else
+                <li><a href="/dashboard">Dashboard</a></li> 
+                  @endif    
+                  </ul>
+      
+                </div><!-- /.nav-collapse -->
+      
+            </div>
+      
+          </nav><!-- /.Navbar -->
 
     <div class="container container-maindetailed">
 
@@ -156,44 +158,37 @@
             	<hr>
 
             	<h3>Comments:</h3>
-      @foreach($comments  as $comment)
+              @foreach($comments  as $comment)
 	            <ul>
-          
+
 	            	<li>
 		            	<div class="row">
-                   
 		            		<div class="col-md-1 comment-icon">
 		            			<span class="mdi mdi-comment-outline"></span>
 		            		</div>
-                      <div class="col-md-10">
-				            	 {{$comment->body}}
+
+			            	<div class="col-md-10">
+                        {{$comment->body}}
 				            </div>
-                  <div class="col-md-1"><b></b></div>
-                    
+
+				            <div class="col-md-1"></div>
 		            	</div>
 	            	</li>
-           
+
 	            	<br>
 
 	            	
 
-	            </ul>
-       @endforeach
+              </ul>
+              @endforeach
+
 	            <br>
 
 	            <div class="row">
 
 		            <div class="col-md-7 addcomment">
 
-		            	<form method="POST" action="/addcomment/{{$startup->id}}">
-                    {{ csrf_field() }}
-		            		<textarea class="form-control" name="comment" rows="3" placeholder="Add a comment here"></textarea>
-                     <input type="hidden" name="startup_id" value="{{$startup->id}}" />
-		            		<br>
-
-		            		<button type="submit" class="btn btn-default">Comment</button>
-
-		            	</form>
+		            	
 
 		            </div>
 
@@ -213,7 +208,7 @@
 
 
 	<!-- Footer -->
-	<footer id="footer">
+	<footer class="main-footer mobi-footer">
 
 		<div class="container container-footer">
 

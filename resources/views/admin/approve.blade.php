@@ -23,7 +23,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/"><img src="http://kawolegal.com/assets/img/kawo-legal-logo.png" class="logo" alt="kawo-legal-logo"></a>
+      <a class="navbar-brand" href="http://kawolegal.com"><img src="http://kawolegal.com/assets/img/kawo-legal-logo.png" class="logo" alt="kawo-legal-logo"></a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
@@ -71,22 +71,23 @@
    <center>
    <div class="container">
      <div class="panel-body">
-     <h3>Are You Sure You Want To delete the start up "{{$startup->business_name}}"</h3>
+     <h3>Are You Sure You Want To Approve  "{{$startup->business_name}}"</h3>
 
        <div class="row">
          <div class="col-md-6">
-           <form style="float:right" action="/dashboard/{{$startup->id}}" method="POST">
-            {{method_field('DELETE')}}
+           <form style="float:right" action="/approved/{{$startup->id}}" method="POST">
+            {{method_field('PUT')}}
               {{ csrf_field() }}
-              <button type="submit" class="btn btn-danger" >
+              <input type="hidden" value="Approved" name="status"/>
+              <button type="submit" class="btn btn-success" >
               </form>
-              <span class="glyphicon glyphicon-trash"></span>
+              <span class="glyphicon glyphicon-ok"></span>
               <span>Yes</span>
             </button>
          </div>
          <div class="col-md-1" style="float:left">
            
-            <a href="/dashboard" class="btn btn-success"><span class="glyphicon glyphicon-remove"></span> Cancel</a>
+            <a href="/unapprovedstartup" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Cancel</a>
          </div>
 
        </div>

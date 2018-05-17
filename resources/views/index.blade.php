@@ -56,8 +56,9 @@
 		        <ul class="nav navbar-nav navbar-right kl-nav">
 		            <li class="active"><a href="/">Home</a></li>
 		            <li><a href="/startups">Startups</a></li> 
-					<li><a href="/register">Register</a></li>
+					
 					@if(Auth::guest())
+					<li><a href="/register">Register</a></li>
 					<li><a href="/login">Login</a></li> 
                    @else
 					<li><a href="/dashboard">Dashboard</a></li> 
@@ -93,11 +94,11 @@
 		        	</p>
 
 		        	<br>
-
+                  @if(Auth::guest())
 		        	<p>
-		        		<a href=""><button class="btn btn-info btn-lg text-btn">Register Now!</button></a>
+		        		<a href="/register"><button class="btn btn-info btn-lg text-btn">Register Now!</button></a>
 		        	</p>
-
+                @endif
 		        </div>
 
 		        <div class="col-md-3"></div>
@@ -116,7 +117,7 @@
 
 			<div class="col-md-6 foot-txt">
 				<ul>
-					<li> &copy; 2017 KawoLegal. All Rights Reserved</li>
+					<li> &copy;2017 KawoLegal. All Rights Reserved</li>
 				</ul>
 			</div>
 

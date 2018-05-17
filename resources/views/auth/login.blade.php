@@ -48,14 +48,14 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="index.html"><img src="assets/img/kawo-legal-logo.png" alt="KawoLegal" class="logo"></a>
+	          <a class="navbar-brand" href="/"><img src="assets/img/kawo-legal-logo.png" alt="KawoLegal" class="logo"></a>
 	        </div>
 
 	        <div id="navbar" class="navbar-collapse collapse">
 
 		        <ul class="nav navbar-nav navbar-right kl-nav">
 		            <li><a href="/">Home</a></li>
-		            <li><a href="/startups">Startups</a></li> 
+		            <li ><a href="/startups">Startups</a></li> 
 		            <li ><a href="/register">Register</a></li>
 		            <li class="active"><a href="/login">Login</a></li>    
 		        </ul>
@@ -134,5 +134,42 @@
 </main>
 </div>
 </div>
+
+<!-- Footer--> 
+<!--<footer class="main-footer mobi-footer">
+
+    <div class="container container-footer">
+
+        <div class="col-md-6 foot-txt">
+            <ul>
+                <li> &copy;2017 KawoLegal. All Rights Reserved</li>
+            </ul>
+        </div>
+
+        <div class="col-md-6 social">
+
+            <ul>
+                <li><a href=""><span class="mdi mdi-facebook"></span></a></li>
+                <li><a href=""><span class="mdi mdi-twitter"></span></a></li>
+                <li><a href=""><span class="mdi mdi-linkedin"></span></a></li>
+                <li><a href=""><span class="mdi mdi-instagram"></span></a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</footer>-->
+
+
+
+    <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+
 </body>
 </html>

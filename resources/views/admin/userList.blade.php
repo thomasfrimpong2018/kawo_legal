@@ -88,18 +88,18 @@
           <div class="col-md-3">
 
             <div class="list-group">
-              <a href="/dashboard" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              <a href="/dashboard" class="list-group-item "><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                 Dashboard
               </a>
               <a href="/newstartup" class="list-group-item"><span class="glyphicon glyphicon-plus" aria-hidden="true">    
                 </span> Add Startup
               </a>
               
-              <a href="/userlist" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true">   
-              </span>Manage Users 
+              <a href="/userlist" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-user" aria-hidden="true">   
+              </span>All Users 
             </a>
             <a href="/adminlist" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true">   
-            </span>Manage Admins
+            </span>All Admins
           </a>
             
               <a href="/approvedstartup" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true">   
@@ -116,46 +116,39 @@
             <!--List of All Startups-->
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">All Startups</h3>
+                <h3 class="panel-title">All Users</h3>
               </div>
               <div class="panel-body">
                   <div class="row">
                     <div class="col-md-12">
-                      
-                      <input type="text" class="form-control" placeholder="Filter Startups" name="search" id="search" />
-                     
-                      
+                      <input type="text" class="form-control" placeholder="Filter Startups">
                     </div>
                   </div>
+                  @if(count($users)>0)
                   <br>
-                  @if(count($startups)>0)
                   <table class="table table-striped table-hover">
                     <tr>
-                      <th>Company</th>
-                      <th>Market/Industry</th>
-                      <th>Location</th>
+                      <th>Full Name</th>
+                      <th>Email</th>
                       <th>Joined</th>
-                      <th>Status</th>
-                      <th>Details</th>
+                      <th>Change Privilege</th>
+                      <th>Remove</th>
                     </tr>
 
-                   
-                    @foreach($startups as $startup)
+                    @foreach($users as $user)
                     <tr>
-                      <td><img src="/storage/cover_image/{{$startup->business_logo}}" class="img-logo"> {{$startup->business_name}}</td>
-                      <td>{{$startup->industry}}</td>
-                      <td>{{$startup->business_location}}</td>
-                      <td>{{$startup->created_at}}</td>
-                      <td>{{$startup->status}}</td>
-                      <td><a class="btn btn-primary" href="/showdetails/{{$startup->id}}"><i class="glyphicon glyphicon-pencil"></i></a> </td>
+                      <td>{{$user->name}}</td>
+                      <td>{{$user->email}}</td>
+                      <td>{{$user->created_at}}</td>
+                    <td><a class="btn btn-primary" href="/makeadmin/{{$user->id}}"><i class="glyphicon glyphicon-pencil"></i></a> </td>
+                    <td><a class="btn btn-danger" href="/deleteuser/{{$user->id}}"><i class="glyphicon glyphicon-trash"></i></a></td>
                     </tr>
                     @endforeach
-                    </table>
-                    {{$startups->links()}}
+
                     
-                  
+                  </table>
                   @else
-                  <h4>No StarUp to show</h4>
+                  <h4>No User to show</h4>
                   @endif
               </div>
             </div>
@@ -164,7 +157,6 @@
         </div>
       </div>
     </section>
-
     <footer id="footer">
       <p>Copyright KawoLegal, &copy; 2017</p>
     </footer>
@@ -175,6 +167,5 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery-3.1.1.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/app.js"></script>
   </body>
 </html>

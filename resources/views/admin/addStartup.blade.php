@@ -29,7 +29,7 @@
           <ul class="nav navbar-nav">
             <li><a href='/dashboard'>Dashboard</a></li>
             <li><a href="/addStartup">Add Startup</a></li>
-            <li><a href="#">Startup Details</a></li>
+            <li><a href="detailed.html">Startup Details</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
               <li class="active">
@@ -95,9 +95,19 @@
               <a href="/addStartup" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Startup
               </a>
-              <a href="#" class="list-group-item">
-                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Startup Details    
+              <a href="/userlist" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true">   
+              </span>All Users 
+            </a>
+            <a href="/adminlist" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true">   
+            </span>All Admins
+          </a>
+            
+              <a href="/approvedstartup" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true">   
+                </span> Approved StartUps
               </a>
+              <a href="/unapprovedstartup" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true">   
+              </span> Unapproved StartUps
+            </a>
             </div>
           </div>
 
@@ -156,17 +166,17 @@
 
                           <div class="form-group">
                             <label>Facebook</label>
-                            <input type="url" class="form-control"name="facebook" placeholder="Facebook url" >
+                            <input type="text" class="form-control"name="facebook" placeholder="Facebook url" >
                           </div>
 
                           <div class="form-group">
                             <label>Twitter</label>
-                            <input type="url" class="form-control" name="twitter" placeholder="Twitter url" >
+                            <input type="text" class="form-control" name="twitter" placeholder="Twitter url" >
                           </div>
 
                           <div class="form-group">
                             <label>Linkedin</label>
-                            <input type="url" class="form-control" name="linkedin" placeholder="Linkedin url" >
+                            <input type="text" class="form-control" name="linkedin" placeholder="Linkedin url" >
                           </div>
 
                           <div class="form-group">
